@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de Antigüedad Laboral</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <button id="btn-tema" onclick="cambiarTema()" title="Cambiar Tema">
+        🌗
+      </button>
+
+      <h2>Calculadora de Sueldos</h2>
+      <p class="subtitle">Modo Inclusivo (+1 día) | Suma Comercial (30 días)</p>
+
+      <form
+        id="form-calculadora"
+        onsubmit="event.preventDefault(); agregarPeriodo();"
+      >
+        <div class="input-group">
+          <label for="fechaInicio">Fecha de Ingreso:</label>
+          <input type="date" id="fechaInicio" required />
+        </div>
+
+        <div class="input-group">
+          <label for="fechaFin">Fecha de Egreso:</label>
+          <input type="date" id="fechaFin" required />
+        </div>
+
+        <button type="submit">Agregar Periodo</button>
+
+        <button type="button" class="reset" onclick="reiniciar()">
+          Reiniciar Todo
+        </button>
+      </form>
+
+      <div id="resultado-total" class="total-box" style="display: none">
+        Total: 0 años, 0 meses, 0 días
+      </div>
+
+      <div id="lista-periodos"></div>
+    </div>
+  </body>
+</html>
