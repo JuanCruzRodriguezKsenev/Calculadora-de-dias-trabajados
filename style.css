@@ -101,14 +101,14 @@ body {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 5px var(--card-shadow);
-  position: relative; /* Importante para el botón de tema */
+  /* Ya no necesitamos position relative aqui obligatoriamente, pero no estorba */
 }
 
 /* Títulos */
 h2 {
   color: var(--text-main);
   text-align: center;
-  margin-top: 10px;
+  margin-top: 5px; /* Reducido un poco */
 }
 
 .subtitle {
@@ -119,22 +119,30 @@ h2 {
 }
 
 /* =========================================
-   3. BOTÓN DE TEMA (SOL / LUNA)
+   3. BOTÓN DE TEMA (SOL / LUNA) - FLEXBOX
    ========================================= */
+.btn-container {
+    display: flex;
+    justify-content: flex-end; /* Alinea a la derecha */
+    width: 100%;
+    margin-bottom: 5px;
+}
+
 #btn-tema {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  width: auto;
-  background: transparent;
-  border: 1px solid var(--border-color);
-  color: var(--text-main);
-  font-size: 1.2em;
-  padding: 5px 10px;
-  margin: 0;
-  cursor: pointer;
-  border-radius: 20px;
-  transition: background 0.2s;
+    position: static; /* Ya no flota con absolute */
+    width: auto;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    font-size: 1.2em;
+    padding: 6px 12px;
+    margin: 0;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #btn-tema:hover {
@@ -215,7 +223,7 @@ button.reset:hover {
 }
 
 /* =========================================
-   6. TARJETAS DE PERIODO (NUEVA ESTRUCTURA)
+   6. TARJETAS DE PERIODO (RESPONSIVE)
    ========================================= */
 #lista-periodos {
   display: flex;
@@ -227,7 +235,6 @@ button.reset:hover {
 .periodo-item {
   background: var(--card-bg);
   border: 1px solid var(--border-color);
-  /* Padding: Arriba, Derecha, Abajo, Izquierda */
   padding: 15px 10px 15px 20px;
   border-radius: 8px;
   display: flex;
@@ -243,18 +250,18 @@ button.reset:hover {
   box-shadow: 0 4px 8px var(--card-shadow);
 }
 
-/* Contenedor principal de la info (Fechas + Resultado) */
+/* Contenedor principal de la info */
 .periodo-info {
   flex-grow: 1;
-  margin-right: 15px; /* Margen para no tocar el menú */
+  margin-right: 15px;
   display: flex;
-  justify-content: space-between; /* PC: Separados */
+  justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; /* Permite bajar si no hay espacio */
+  flex-wrap: wrap; 
   gap: 15px;
 }
 
-/* Grupo Izquierdo: Fechas */
+/* Grupo Fechas */
 .grupo-fechas {
   display: flex;
   flex-direction: column;
@@ -266,13 +273,13 @@ button.reset:hover {
   align-items: center;
 }
 
-/* Grupo Derecho: Resultado */
+/* Grupo Resultado */
 .grupo-resultado {
   display: flex;
   align-items: center;
 }
 
-/* Estilos de Texto */
+/* Textos */
 .fecha-tag {
   font-family: "Consolas", "Monaco", monospace;
   font-size: 1em;
@@ -283,14 +290,14 @@ button.reset:hover {
 .label-alta, .label-baja {
   font-weight: 700;
   margin-right: 6px;
-  min-width: 45px; /* Ancho fijo para alinear verticalmente */
+  min-width: 45px; 
   display: inline-block;
 }
 
 .label-alta { color: var(--label-alta); }
 .label-baja { color: var(--label-baja); }
 
-/* Pastilla Azul del Resultado */
+/* Pastilla Azul */
 .resultado-destacado {
   font-weight: 600;
   color: var(--highlight-text);
@@ -331,7 +338,7 @@ button.reset:hover {
   background-color: var(--menu-hover);
 }
 
-/* El cuadro desplegable */
+/* Dropdown */
 .menu-dropdown {
   display: none;
   position: absolute;
@@ -356,7 +363,7 @@ button.reset:hover {
   display: block;
 }
 
-/* Botones dentro del menú */
+/* Botones del menú */
 .menu-dropdown button {
   color: var(--menu-text);
   padding: 12px 16px;
@@ -396,7 +403,6 @@ button.reset:hover {
 /* =========================================
    8. MEDIA QUERY (CELULARES)
    ========================================= */
-/* Si la pantalla es menor a 500px, cambia el diseño */
 @media (max-width: 500px) {
   .periodo-info {
     flex-direction: column; /* Apila uno sobre otro */
