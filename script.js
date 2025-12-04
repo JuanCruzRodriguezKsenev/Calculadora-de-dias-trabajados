@@ -97,50 +97,53 @@ function editarPeriodo(index) {
 
 // --- RENDERIZADO (DIBUJAR LA LISTA) ---
 
+// --- Reemplaza la función actualizarListaCompleta por esta ---
+
 function actualizarListaCompleta() {
   const lista = document.getElementById("lista-periodos");
-  lista.innerHTML = ""; // Limpiamos la lista visual antes de redibujar
+  lista.innerHTML = ""; 
 
-  // Recorremos el array y dibujamos cada elemento
   periodos.forEach((p, index) => {
     const item = document.createElement("div");
     item.className = "periodo-item";
 
-    // Formatear fechas para mostrar bonito (DD/MM/AAAA)
+    // Formatear fechas
     const f1Arr = p.rawInicio.split("-");
     const f2Arr = p.rawFin.split("-");
     const f1Show = `${f1Arr[2]}/${f1Arr[1]}/${f1Arr[0]}`;
     const f2Show = `${f2Arr[2]}/${f2Arr[1]}/${f2Arr[0]}`;
 
     item.innerHTML = `
-            <div class="periodo-info">
-                <div class="linea-superior">
-                    <div>
-                        <span class="label-alta">Alta:</span>
-                        <span class="fecha-tag">${f1Show}</span>
-                    </div>
-                    <div class="resultado-destacado">
-                        ${p.a} años, ${p.m} meses, ${p.d} días
-                    </div>
+        <div class="periodo-info">
+            <div class="grupo-fechas">
+                <div class="fila-dato">
+                    <span class="label-alta">Alta:</span>
+                    <span class="fecha-tag">${f1Show}</span>
                 </div>
-                <div class="linea-inferior">
+                <div class="fila-dato">
                     <span class="label-baja">Baja:</span>
                     <span class="fecha-tag">${f2Show}</span>
                 </div>
             </div>
 
-            <div class="periodo-menu">
-                <button class="btn-dots" onclick="toggleMenu(event, 'menu-${index}')">&#8942;</button>
-                <div id="menu-${index}" class="menu-dropdown">
-                    <button onclick="editarPeriodo(${index})">✏️ Editar</button>
-                    <button class="btn-delete-menu" onclick="eliminarPeriodo(${index})">🗑️ Eliminar</button>
+            <div class="grupo-resultado">
+                <div class="resultado-destacado">
+                    ${p.a} años, ${p.m} meses, ${p.d} días
                 </div>
             </div>
-        `;
+        </div>
+
+        <div class="periodo-menu">
+            <button class="btn-dots" onclick="toggleMenu(event, 'menu-${index}')">&#8942;</button>
+            <div id="menu-${index}" class="menu-dropdown">
+                <button onclick="editarPeriodo(${index})">✏️ Editar</button>
+                <button class="btn-delete-menu" onclick="eliminarPeriodo(${index})">🗑️ Eliminar</button>
+            </div>
+        </div>
+    `;
     lista.appendChild(item);
   });
 
-  // Recalcular el total final
   calcularTotalComercial();
 }
 
