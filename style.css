@@ -1,0 +1,283 @@
+/* --- DEFINICIÓN DE COLORES (VARIABLES) --- */
+:root {
+    /* Modo Claro (Por defecto) */
+    --bg-body: #f4f4f4;
+    --bg-container: #ffffff;
+    --text-main: #333333;
+    --text-subtitle: #666666;
+    --border-color: #ddd;
+    --input-bg: #ffffff;
+    --input-text: #000000;
+    --input-border: #ccc;
+    --btn-primary: #007bff;
+    --btn-primary-hover: #0056b3;
+    --btn-danger: #dc3545;
+    --btn-danger-hover: #a71d2a;
+    --card-bg: #ffffff;
+    --card-shadow: rgba(0,0,0,0.1);
+    --highlight-bg: #e7f1ff;
+    --highlight-text: #0056b3;
+    --label-alta: #28a745;
+    --label-baja: #dc3545;
+    --success-box-bg: #d4edda;
+    --success-box-text: #155724;
+    --success-box-border: #c3e6cb;
+    --menu-bg: #ffffff;
+    --menu-hover: #f8f9fa;
+    --menu-text: #000000;
+    --dots-color: #6c757d;
+}
+
+[data-theme="dark"] {
+    /* Modo Oscuro */
+    --bg-body: #121212;
+    --bg-container: #1e1e1e;
+    --text-main: #e0e0e0;
+    --text-subtitle: #b0b0b0;
+    --border-color: #444;
+    --input-bg: #2d2d2d;
+    --input-text: #ffffff;
+    --input-border: #555;
+    --btn-primary: #0d6efd;
+    --btn-primary-hover: #0b5ed7;
+    --btn-danger: #bb2d3b;
+    --btn-danger-hover: #b02a37;
+    --card-bg: #2c2c2c;
+    --card-shadow: rgba(0,0,0,0.5);
+    --highlight-bg: #1a3c5e;
+    --highlight-text: #8cb4ff;
+    --label-alta: #2ea043; /* Un verde más suave para oscuro */
+    --label-baja: #da3633; /* Un rojo más suave para oscuro */
+    --success-box-bg: #0f3d24;
+    --success-box-text: #d4edda;
+    --success-box-border: #1a4d30;
+    --menu-bg: #2c2c2c;
+    --menu-hover: #3c3c3c;
+    --menu-text: #e0e0e0;
+    --dots-color: #a0a0a0;
+}
+
+/* --- ESTILOS GENERALES --- */
+body { 
+    font-family: 'Segoe UI', sans-serif; 
+    max-width: 600px; 
+    margin: 20px auto; 
+    padding: 20px; 
+    background-color: var(--bg-body); 
+    color: var(--text-main);
+    transition: background-color 0.3s, color 0.3s; /* Suaviza el cambio */
+}
+
+.container { 
+    background: var(--bg-container); 
+    padding: 20px; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 5px var(--card-shadow); 
+    position: relative; /* Para posicionar el botón de tema */
+}
+
+/* Botón de tema flotante arriba a la derecha */
+#btn-tema {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: auto;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    font-size: 1.2em;
+    padding: 5px 10px;
+    margin: 0;
+    cursor: pointer;
+    border-radius: 20px;
+}
+#btn-tema:hover {
+    background-color: var(--highlight-bg);
+}
+
+h2 { 
+    color: var(--text-main); 
+    text-align: center; 
+}
+
+.subtitle {
+    text-align: center; 
+    font-size: 0.9em; 
+    color: var(--text-subtitle);
+    margin-bottom: 20px;
+}
+
+.input-group { 
+    margin-bottom: 15px; 
+}
+
+label { 
+    display: block; 
+    margin-bottom: 5px; 
+    font-weight: bold; 
+    color: var(--text-main);
+}
+
+input { 
+    width: 100%; 
+    padding: 8px; 
+    box-sizing: border-box; 
+    background-color: var(--input-bg);
+    color: var(--input-text);
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
+}
+
+/* Botones Principales */
+button { 
+    width: 100%; 
+    padding: 10px; 
+    background-color: var(--btn-primary); 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    margin-top: 10px; 
+}
+
+button:hover { 
+    background-color: var(--btn-primary-hover); 
+}
+
+button.reset { 
+    background-color: var(--btn-danger); 
+    margin-top: 5px; 
+}
+
+button.reset:hover { 
+    background-color: var(--btn-danger-hover); 
+}
+
+/* Caja de Resultado Final */
+.total-box { 
+    margin-top: 20px; 
+    padding: 15px; 
+    background-color: var(--success-box-bg); 
+    border: 1px solid var(--success-box-border); 
+    color: var(--success-box-text); 
+    font-weight: bold; 
+    text-align: center; 
+    font-size: 1.2em; 
+    border-radius: 5px; 
+}
+
+/* --- TARJETAS DE PERIODO --- */
+.periodo-item { 
+    background: var(--card-bg); 
+    border: 1px solid var(--border-color);
+    padding: 15px; 
+    margin-bottom: 10px; 
+    border-radius: 8px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start; 
+    box-shadow: 0 2px 4px var(--card-shadow);
+    position: relative; 
+}
+
+.periodo-info {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.linea-superior {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    flex-wrap: wrap; 
+    gap: 10px;
+}
+
+.linea-inferior {
+    font-size: 0.9em;
+    color: var(--text-subtitle);
+}
+
+.fecha-tag {
+    font-family: monospace;
+    font-size: 1.05em;
+    color: var(--text-main);
+}
+
+.label-alta { color: var(--label-alta); font-weight: bold; margin-right: 5px; }
+.label-baja { color: var(--label-baja); font-weight: bold; margin-right: 5px; }
+
+.resultado-destacado {
+    font-weight: bold;
+    color: var(--highlight-text);
+    background-color: var(--highlight-bg);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.9em;
+}
+
+/* --- MENÚ DE 3 PUNTITOS --- */
+.periodo-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.btn-dots {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--dots-color);
+    padding: 0 5px;
+    line-height: 0.5;
+    margin: 0;
+    width: auto;
+}
+
+.btn-dots:hover {
+    color: var(--text-main);
+    background: none;
+}
+
+/* Dropdown */
+.menu-dropdown {
+    display: none; 
+    position: absolute;
+    right: 0;
+    top: 25px;
+    background-color: var(--menu-bg);
+    min-width: 120px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4); /* Sombra un poco más fuerte */
+    border-radius: 5px;
+    z-index: 10;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+}
+
+.menu-dropdown.active {
+    display: block;
+}
+
+.menu-dropdown button {
+    color: var(--menu-text);
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    margin: 0;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.menu-dropdown button:hover {
+    background-color: var(--menu-hover);
+}
+
+.menu-dropdown button.btn-delete-menu {
+    color: var(--btn-danger);
+}
